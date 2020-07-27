@@ -77,10 +77,9 @@ zoos["Bronx Zoo"][:animals][0][:count] += 1
 
 #zoos[“Bronx Zoo”][:animals] << {species: "Panda", count: 2}
 
-zoos.each do |zoo|
-    zoo[:animals] << {species: "Panda", count: 2}
+zoos.each do |zoo, categories|
+     zoos[zoo][:animals] << {species: "Panda", count: 2}
 end
-p zoos
 
 
 # Return the number of Tigers at the Bronx Zoo.
