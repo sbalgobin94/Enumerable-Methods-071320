@@ -86,14 +86,22 @@ end
 # Rather than assuming that the animal at index 2 will always be the "Tiger" hash:
 # First find the "Tiger" hash from the array of Animals at the Bronx Zoo and then, access the value under the ":count" key
 
-
-
-
-
+ zoos["Bronx Zoo"][:animals].each do |species|
+    species.each_with_index do |animal, index|
+        if animal.include?("Tiger")
+            p zoos["Bronx Zoo"][:animals][index][:count]
+        end
+    end
+ end
 
 # Generalize the process to find the ticket price of a specific zoo.
 # In other words, you're given a `name_of_zoo` variable that is a string.
 # Return the price associated with the `name_of_zoo` variable.
+
+def ticket_price(zoo, name)
+    p zoo[name][:price]
+end
+
 
 # No matter which 1 of the 3 variable assignment you choose, your code should work:
 # name_of_zoo = "Bronx Zoo" => returns 25
@@ -107,7 +115,13 @@ end
 # Return the sum of all the zoos' price. 
 # The return value should be: 53 
 
+p "======================================================"
 
+sum = 0 
+zoos.each do |zoo, categories|
+    sum += categories[:price]
+end
+p sum
 
 
 
