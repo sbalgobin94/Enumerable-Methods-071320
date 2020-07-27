@@ -75,19 +75,10 @@ zoos["Bronx Zoo"][:animals][0][:count] += 1
 # Each of the zoos in the city just received 2 pandas. Alter the `zoos` information to reflect this new change:
 # In the array of animals under each Zoo, shovel this hash: { species: "Panda", count: 2 }
 
-zoos.each do |individual_zoo|
-    individual_zoo.each do |zoo_info|
-        if zoo_info == :animals
-            :animals << {species: "Panda", count: 2}
-        end
-    end
-
-    p zoos
-#zoos[“Bronx Zoo”][:animals] << {species: "Panda", count: 2}
-
 zoos.each do |zoo, categories|
      zoos[zoo][:animals] << {species: "Panda", count: 2}
 end
+
 
 # Return the number of Tigers at the Bronx Zoo.
 # Rather than assuming that the animal at index 2 will always be the "Tiger" hash:
@@ -121,8 +112,6 @@ end
 
 # Return the sum of all the zoos' price. 
 # The return value should be: 53 
-
-p "======================================================"
 
 sum = 0 
 zoos.each do |zoo, categories|
