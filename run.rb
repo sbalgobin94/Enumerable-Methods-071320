@@ -63,7 +63,7 @@ zoos = {
 # Central Park Zoo has just received 4 wolves. Alter the `zoos` information to reflect this new change:
 # Put this hash: { species: "Wolf", count: 4 } in the array under the `:animals` key in Central Park Zoo
 
-zoos["Central Park Zoo"][:animals] << {:species => "Wolf", count: 2}
+zoos["Central Park Zoo"][:animals] << {:species => "Wolf", count: 4}
 
 # The 2 penguins in the Bronx Zoo just had a baby. Alter the `zoos` information to reflect this new change:
 # Increment the number for the `:count` key in the "Penguin" hash in the Bronx Zoo array by 1. 
@@ -137,11 +137,10 @@ weekend_parks = {}
 parks = []
 zoos.map do |park, park_info|
     if park_info[:weekend] == true 
-        weekend_parks[park.to_sym] = park
+        parks << park
     end      
 end
-p weekend_parks
-
+p weekend_parks = parks
 
 
 
@@ -149,29 +148,57 @@ p weekend_parks
 # The return value should be an array with two elements: ["Central Park Zoo", { location: "Manhattan", ... }]
 # Consider which higher-level enumerable method(s) you'd use here.
 
+first_zoo = []
+zoos.find do |park, park_info|
+    if park_info[:weekend] == true && park_info[:price] < 20
+        first_zoo[0] = park
+        first_zoo[1] = park_info
+    end
+end
 
-
+p first_zoo
 
 
 # Find all the zoos where there are monkeys.
 # The return value should be a hash with two keys: ["Central Park Zoo", "Staten Island Zoo"]
 # Consider which higher-level enumerable method(s) you'd use here.
 
+monkeys = {}
+parks = []
+zoos.map do |park, park_info|
+    park_info[:animals].map do |species_array|
+        if species_array[:species] == "Monkey"
+            parks << park
+        end
+    end
+end
 
+p monkeys = parks
 
-
-
+p "=========================================================================="
 # Return an array of 3 numbers, each describing the total sum of the number of animals in a zoo.
 # The return value should be an array of 3 numbers: [20, 14, 17]
 # Consider which higher-level enumerable method(s) you'd use here.
 
 
+total_sum = []
+
+zoos.each do |park, park_info|
+    park_sum = 0
+    park_info[:animals].each do |species_array|
+        park_sum += species_array[:count]
+    end
+    total_sum << park_sum
+end
+
+p total_sum
 
 
 
 # Find the zoo with the highest count of any species in it. (Butterflies with the 12 count is the highest)
 # The return value should be an array with two elements: ["Bronx Zoo", { location: "Bronx", ... }]
 # Consider which higher-level enumerable method(s) you'd use here.
+
 
 
 
