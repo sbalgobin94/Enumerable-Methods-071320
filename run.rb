@@ -108,8 +108,6 @@ end
 
 
 
-
-
 # Return the sum of all the zoos' price. 
 # The return value should be: 53 
 
@@ -127,7 +125,7 @@ p sum
 
 zoo_locations = []
 zoos.map do |park, park_info|
-    zoo_locations << park
+    zoo_locations << park_info[:location]
 end
 p zoo_locations
 
@@ -135,6 +133,14 @@ p zoo_locations
 # The return value should be a hash with two keys: ["Bronx Zoo", "Central Park Zoo"]
 # Consider which higher-level enumerable method(s) you'd use here.
 
+weekend_parks = {}
+parks = []
+zoos.map do |park, park_info|
+    if park_info[:weekend] == true 
+        weekend_parks[park.to_sym] = park
+    end      
+end
+p weekend_parks
 
 
 
