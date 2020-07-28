@@ -125,9 +125,11 @@ p sum
 # The return value should be an array of strings: ["Bronx", "Manhattan", "Staten Island"]
 # Consider which higher-level enumerable method(s) you'd use here.
 
-
-
-
+zoo_locations = []
+zoos.map do |park, park_info|
+    zoo_locations << park
+end
+p zoo_locations
 
 # Find all the zoos that are open on the weekend. 
 # The return value should be a hash with two keys: ["Bronx Zoo", "Central Park Zoo"]
